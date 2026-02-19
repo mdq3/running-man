@@ -241,11 +241,6 @@ func clearScreen() {
 	fmt.Printf("\033[H\033[2J")
 }
 
-func moveToTop() {
-	// Move cursor to top-left corner without clearing screen
-	fmt.Printf("\033[H")
-}
-
 func clearAnimationArea() {
 	// Move to top-left position
 	fmt.Printf("\033[H")
@@ -261,7 +256,7 @@ func showCursor() {
 	fmt.Printf("\033[?25h")
 }
 
-func printFrame(frame []string, frameNum int) {
+func printFrame(frame []string) {
 	blueColor := "\033[1;34m"
 	resetColor := "\033[0m"
 	const maxHeight = 30  // Tallest frame height
@@ -315,7 +310,7 @@ func main() {
 					return
 				default:
 					clearAnimationArea()
-					printFrame(frame, 0)
+					printFrame(frame)
 					time.Sleep(100 * time.Millisecond) // Fast animation
 				}
 			}
